@@ -12,7 +12,14 @@
     <url>http://github.com/tootedom/access-logging</url>
     <properties>
         <tomcat.version>7.0.42</tomcat.version>
+        <distMgmtSnapshotsUrl>http://oss.sonatype.org/content/repositories/snapshots</distMgmtSnapshotsUrl>
+
     </properties>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
     <dependencies>
         <dependency>
             <groupId>com.lmax</groupId>
@@ -89,7 +96,7 @@
                 <configuration>
                     <mavenExecutorId>forked-path</mavenExecutorId>
                     <useReleaseProfile>false</useReleaseProfile>
-                    <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+                    <arguments>${arguments} -Psonatype-oss-release</arguments>
                 </configuration>
             </plugin>
             <plugin>
